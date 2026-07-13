@@ -15,6 +15,9 @@ distance = st.number_input(
     value=300
 )
 
+if distance > 500:
+        st.warning("Model currently supports 100–500 m only.")
+
 movement_options = {
     "Slow Crouch": 0,
     "Fast Crouch": 1,
@@ -26,7 +29,7 @@ choice = st.selectbox("Target Movement", movement_options.keys())
 movement = movement_options[choice]
 
 if st.button("Calculate"):
-
+    
     X = poly.transform([[distance, movement]])
 
     mil = reg.predict(X)[0]
