@@ -11,7 +11,7 @@ distance = st.number_input(
     "Distance (m)",
     min_value=100,
     max_value=2000,
-    step=25,
+    step=20,
     value=300
 )
 
