@@ -36,5 +36,5 @@ if st.button("Calculate"):
 
     st.metric(
     label="Hold",
-        value=f"{mil:.1f} mil"
+        value=f"{mil:.2f} mil"
     )
