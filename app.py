@@ -3,7 +3,7 @@ import joblib
 
 kits = {
        "Sniper Rifles" : { 
-           "Timberwolf":{"model":"models/timberwolf_model.pkl", "poly":"models/timberwolf_poly.pkl"}, 
+           "Timberwolf":{"model":"Models + Polynomials/timberwolf_model.pkl", "poly":"Models + Polynomials/timberwolf_poly.pkl"}, 
        },
         "HAT" : {
             "RPG-1" : {"model":"model.pkl", "poly":"poly.pkl"},
