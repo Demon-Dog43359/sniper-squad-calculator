@@ -1,16 +1,24 @@
 import streamlit as st
 import joblib
 
-sniperRifle = {
-    "Timberwolf":{"model":"model.pkl", "poly":"poly.pkl"},
+kits = {
+       "Sniper Rifles" : { 
+           "Timberwolf":{"model":"model.pkl", "poly":"poly.pkl"}, 
+       },
+        "HAT" : {
+            "RPG-1" : {"model":"model.pkl", "poly":"poly.pkl"},
+        },
 }
-
 
 st.title("Squad Hold Calculator")
 
-rifle = st.selectbox("Sniper Rifle", list(sniperRifle.keys()))
-reg = joblib.load(sniperRifle[rifle]["model"])
-poly = joblib.load(sniperRifle[rifle]["poly"])
+kit = st.selectbox("Kit", list(kits.keys()))
+weapon = st.selectbox("Weapon", list(kits[kit].keys()))
+reg = joblib.load(kits[kit][weapon]["model"])
+poly = joblib.load(kits[kit][weapon]["poly"])
+
+if kit != "Sniper Rifles":
+    st.warning("Error: Data Available only for Sniper Rifles now")
 
 distance = st.number_input(
     "Distance (m)",
