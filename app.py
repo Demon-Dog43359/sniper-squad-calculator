@@ -6,7 +6,7 @@ kits = {
            "Timberwolf":{"model":"Models + Polynomials/timberwolf_model.pkl", "poly":"Models + Polynomials/timberwolf_poly.pkl"}, 
        },
         "HAT" : {
-            "RPG-1" : {"model":"model.pkl", "poly":"poly.pkl"},
+            "RPG-1" : {"model":"Models + Polynomials/timberwolf_model.pkl", "poly":"Models + Polynomials/timberwolf_poly.pkl"},
         },
 }
 
