@@ -1,11 +1,16 @@
 import streamlit as st
 import joblib
 
-# Load the model
-reg = joblib.load("model.pkl")
-poly = joblib.load("poly.pkl")
+sniperRifle = {
+    "Timberwolf":{"model":"model.pkl", "poly":"poly.pkl"},
+}
 
-st.title("Squad Timberwolf Hold Calculator")
+
+st.title("Squad Hold Calculator")
+
+rifle = st.selectbox("Sniper Rifle", list(sniperRifle.keys()))
+reg = joblib.load(sniperRifle[rifle]["model"])
+poly = joblib.load(sniperRifle[rifle]["poly"])
 
 distance = st.number_input(
     "Distance (m)",
