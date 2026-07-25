@@ -10,7 +10,7 @@ st.title("Squad Timberwolf Hold Calculator")
 distance = st.number_input(
     "Distance (m)",
     min_value=100,
-    max_value=2000,
+    max_value=1000,
     step=10,
     value=300
 )
