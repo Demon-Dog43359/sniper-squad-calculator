@@ -3,36 +3,43 @@ import joblib
 
 database = {
        "Western Private Military Contractors":{
-              kits = {
-                     "Sniper Rifles" : { 
-                         "Timberwolf":{"model":"Models + Polynomials/timberwolf_model.pkl", "poly":"Models + Polynomials/timberwolf_poly.pkl"}, 
-                     },
-                      "HAT" : {
-                          "RPG-1" : {"model":"Models + Polynomials/timberwolf_model.pkl", "poly":"Models + Polynomials/timberwolf_poly.pkl"},
-                      },
-              }, 
+
+            "Sniper Rifles" : { 
+                "Timberwolf":{"model":"Models + Polynomials/timberwolf_model.pkl", "poly":"Models + Polynomials/timberwolf_poly.pkl"}, 
+            },
+
+            "HAT" : {
+                "RPG-1" : {"model":"Models + Polynomials/timberwolf_model.pkl", "poly":"Models + Polynomials/timberwolf_poly.pkl"},
+            }, 
        },
+
+
        "People's Liberation Army": {
-              kits = {
-                     "Sniper Rifles":{
-                            "Sniper 1": {"model": "Models + Polynomials/timberwolf_model.pkl", "poly":"Models + Polynomials/timberwolf_poly.pkl"},
-                     }, 
-                     "HAT":{
-                            "RPG-1":{"model": "Models + Polynomials/timberwolf_model.pkl", "poly":"Models + Polynomials/timberwolf_poly.pkl"},
-                     }
-              }
-       }
+
+            "Sniper Rifles":{
+                "Sniper 1": {"model": "Models + Polynomials/timberwolf_model.pkl", "poly":"Models + Polynomials/timberwolf_poly.pkl"},
+            }, 
+
+            "HAT":{
+                "RPG-1":{"model": "Models + Polynomials/timberwolf_model.pkl", "poly":"Models + Polynomials/timberwolf_poly.pkl"},
+            },
+       },
 }
 
+
 st.title("Squad Hold Calculator")
-faction = st.selectbox("Faction", list(factions.keys()))
-kit = st.selectbox("Kit", list(kits.keys()))
-weapon = st.selectbox("Weapon", list(kits[kit].keys()))
-reg = joblib.load(database[faction][kit][weapon]["model"])
-poly = joblib.load(database[faction][kit][weapon]["poly"])
+faction = st.selectbox("Faction", list(database.keys()))
+kit = st.selectbox("Kit", list(database[faction].keys()))
+weapon = st.selectbox("Weapon", list(database[faction][kit].keys()))
+
 
 if kit != "Sniper Rifles":
     st.warning("Error: Data Available only for Sniper Rifles now")
+    st.stop()
+
+selected_weapon = database[faction][kit][weapon]
+reg = joblib.load(selected_weapon["model"])
+poly = joblib.load(selected_weapon["poly"])
 
 distance = st.number_input(
     "Distance (m)",
