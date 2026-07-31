@@ -12,8 +12,8 @@ database = {
                     "vertical_model":None,
                     "vertical_poly":None,
 
-                     "horizontal_model":"Models + Polynomials/timberwolf_model.pkl", 
-                     "horizontal_poly":"Models + Polynomials/timberwolf_poly.pkl"
+                     "horizontal_model":"Models + Polynomials/timberwolf_horizontal_model.pkl", 
+                     "horizontal_poly":"Models + Polynomials/timberwolf_horizontal_poly.pkl"
                      }, 
             },
 
