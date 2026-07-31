@@ -1,21 +1,35 @@
 import streamlit as st
 import joblib
 
-kits = {
-       "Sniper Rifles" : { 
-           "Timberwolf":{"model":"Models + Polynomials/timberwolf_model.pkl", "poly":"Models + Polynomials/timberwolf_poly.pkl"}, 
+database = {
+       "Western Private Military Contractors":{
+              kits = {
+                     "Sniper Rifles" : { 
+                         "Timberwolf":{"model":"Models + Polynomials/timberwolf_model.pkl", "poly":"Models + Polynomials/timberwolf_poly.pkl"}, 
+                     },
+                      "HAT" : {
+                          "RPG-1" : {"model":"Models + Polynomials/timberwolf_model.pkl", "poly":"Models + Polynomials/timberwolf_poly.pkl"},
+                      },
+              }, 
        },
-        "HAT" : {
-            "RPG-1" : {"model":"Models + Polynomials/timberwolf_model.pkl", "poly":"Models + Polynomials/timberwolf_poly.pkl"},
-        },
+       "People's Liberation Army": {
+              kits = {
+                     "Sniper Rifles":{
+                            "Sniper 1": {"model": "Models + Polynomials/timberwolf_model.pkl", "poly":"Models + Polynomials/timberwolf_poly.pkl"},
+                     }, 
+                     "HAT":{
+                            "RPG-1":{"model": "Models + Polynomials/timberwolf_model.pkl", "poly":"Models + Polynomials/timberwolf_poly.pkl"},
+                     }
+              }
+       }
 }
 
 st.title("Squad Hold Calculator")
-
+faction = st.selectbox("Faction", list(factions.keys()))
 kit = st.selectbox("Kit", list(kits.keys()))
 weapon = st.selectbox("Weapon", list(kits[kit].keys()))
-reg = joblib.load(kits[kit][weapon]["model"])
-poly = joblib.load(kits[kit][weapon]["poly"])
+reg = joblib.load(database[faction][kit][weapon]["model"])
+poly = joblib.load(database[faction][kit][weapon]["poly"])
 
 if kit != "Sniper Rifles":
     st.warning("Error: Data Available only for Sniper Rifles now")
